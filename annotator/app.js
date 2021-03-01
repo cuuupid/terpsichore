@@ -68,15 +68,13 @@ const init = async () => {
   win = new BrowserWindow({
     show: false,
     frame: true,
-    titleBarStyle: 'hidden',
-    backgroundColor: '#312f2e',
+    backgroundColor: '#161b22',
     webPreferences: {
       enableRemoteModule: true,
       nodeIntegration: true
     },
   })
 
-  win.maximize()
   win.show()
   win.focus()
 
