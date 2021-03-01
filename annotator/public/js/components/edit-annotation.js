@@ -8,6 +8,10 @@ Vue.component('edit-annotation', {
   },
   methods: {
     async save() {
+      if (!this.link) {
+        this.$root.annotations.splice(this.$root.activeAnnotation, 1)
+        return this.$root.saveDataset()
+      }
       this.lyrics = document.getElementById('lyrics').innerText
       Vue.set(this.$root.annotations, this.$root.activeAnnotation, {
         link: this.link, start: this.start, end: this.end, lyrics: this.lyrics
