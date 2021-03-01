@@ -38,17 +38,26 @@
           <input v-model="datasetName" type="text" placeholder="Dataset name" minlength="1" maxlength="30" class="modal-input"
             style="margin-top: -20px;" autofocus>
           <div class="modal-bottom">
-            <a v-if="datasetName" class="text-center clickable"><p>Add Dataset</p></a>
+            <a v-if="datasetName" class="text-center clickable" @click="addDataset"><p>Add Dataset</p></a>
             <p v-else class="red text-center">Please enter a valid dataset name.</p>
           </div>
         </div>
       </div>
     </div>
 
-    <div v-for="(dataset, i) in datasets">
-      <i class="fab fa-linux" aria-hidden="true"></i>
-      <p><a class="clickable">{{dataset.name}}</a> <small>{{dataset.key}}</small></p>
-    </div>
+    <a v-for="(dataset, i) in datasets" class="clickable" @click="selectDataset(i)">
+      <div class="dataset-item row">
+        <div class="col-1">
+          <i class="fa fa-table" aria-hidden="true"></i>
+        </div>
+        <div class="col-8">
+          <span class="dataset-name">{{dataset.name}}</span>
+        </div>
+        <div class="col-3">
+          <small class="dataset-key">{{dataset.key}}</small>
+        </div>
+      </div>
+    </a>
 
     <a class="text-center footer">
       <p><small>version {{hash}}</small></p>
