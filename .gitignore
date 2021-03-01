@@ -1,2 +1,3 @@
 annotator/node_modules
 .DS_Store
+annotator/package-lock.json

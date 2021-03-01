@@ -1,0 +1,94 @@
+{
+  "name": "dance-annotator",
+  "productName": "Dance Annotator",
+  "version": "0.1.0",
+  "description": "Dance video annotator",
+  "main": "app.js",
+  "scripts": {
+    "start": "clear; electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "start-windows": "%APPDATA%\\npm\\electron-forge start",
+    "package-windows": "%APPDATA%\\npm\\electron-forge package",
+    "make-windows": "%APPDATA%\\npm\\electron-forge make",
+    "publish-windows": "%APPDATA%\\npm\\electron-forge publish",
+    "enable-github": "export GITHUB_TOKEN=c4da6d8b5243d14d57e29c4afb2f91083cc6f0a1",
+    "enable-github-windows": "set GITHUB_TOKEN=c4da6d8b5243d14d57e29c4afb2f91083cc6f0a1",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [],
+  "author": {
+    "name": "Priansh 🦭",
+    "email": "priansh@helloaiko.com"
+  },
+  "license": "Proprietary, all rights reserved, no permissions granted.",
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "asar": true
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "dance_annotator"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-dmg",
+          "config": {
+            "format": "ULFO",
+            "name": "Dance Annotator"
+          }
+        }
+      ],
+      "plugins": [
+        [
+          "@electron-forge/plugin-auto-unpack-natives"
+        ]
+      ],
+      "publishers": [
+        {
+          "name": "@electron-forge/publisher-github",
+          "config": {
+            "repository": {
+              "owner": "Seal-Labs",
+              "name": "dance-scraper"
+            },
+            "prerelease": false,
+            "draft": false
+          }
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "@cliqz/adblocker-electron": "^1.20.2",
+    "@sentry/electron": "^2.0.4",
+    "@sentry/node": "^5.11.0",
+    "colors": "^1.4.0",
+    "cross-fetch": "^3.0.6",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-updater": "^4.3.5",
+    "fs-extra": "^9.0.1",
+    "jquery": "^3.4.1",
+    "nedb": "^1.8.0",
+    "node-abi": "^2.19.3",
+    "planer": "^1.1.1",
+    "request": "^2.88.0",
+    "ws": "^7.2.5"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "6.0.0-beta.50",
+    "@electron-forge/maker-deb": "6.0.0-beta.50",
+    "@electron-forge/maker-dmg": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "6.0.0-beta.50",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.50",
+    "@electron-forge/maker-zip": "6.0.0-beta.50",
+    "@electron-forge/plugin-auto-unpack-natives": "^6.0.0-beta.54",
+    "@electron-forge/plugin-webpack": "^6.0.0-beta.54",
+    "@electron-forge/publisher-github": "^6.0.0-beta.54",
+    "electron": "^11.1.0"
+  }
+}
