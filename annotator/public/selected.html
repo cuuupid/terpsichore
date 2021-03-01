@@ -23,7 +23,12 @@
     <!--? User styles -->
     <link rel="stylesheet" href="css/custom.css">
 
-    <h1 class="dataset-title text-center">{{name}}</h1>
+    <h1 class="dataset-title text-center">
+      <a class="clickable back-btn" @click="back">
+        <i class="fa fa-angle-left"></i> 
+      </a>
+      {{name}}
+    </h1>
 
     <a class="clickable" @click="addAnnotation">
       <div class="btn add-annotation-btn">
@@ -64,6 +69,20 @@
         </div>
       </div>
     </edit-annotation>
+
+    <a v-for="(annotation, i) in annotations" class="clickable" @click="activeAnnotation = i">
+      <div class="annotation-item row">
+        <div class="col-1">
+          <i class="fa fa-table" aria-hidden="true"></i>
+        </div>
+        <div class="col-8">
+          <span class="annotation-link">{{annotation.link}}</span>
+        </div>
+        <div class="col-3">
+          <small class="annotation-segment">{{annotation.start}}-{{annotation.end}}</small>
+        </div>
+      </div>
+    </a>
 
     <a class="text-center footer">
       <p><small>dataset key {{key}}</small></p>

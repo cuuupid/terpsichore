@@ -1,3 +1,5 @@
+const { black } = require("colors")
+
 window.app = new Vue({
   el: '#app',
   mixins: [
@@ -59,6 +61,10 @@ window.app = new Vue({
     async addAnnotation() {
       this.annotations.unshift({ link: '', start: '', end: '', lyrics: '' })
       this.activeAnnotation = 0
+    },
+    //? View Management
+    async back() {
+      window.history.back()
     }
   }
 })
