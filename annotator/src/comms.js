@@ -89,7 +89,7 @@ const encode = (secret, d) => { // outgoing
 
 //? Registers a handler to an IPC channel. (handler can be async)
 const register = (channel, handler) => {
-  ipcMain.handle(channel, async (_, q) => {
+  ipcMain.handle('please ' + channel, async (_, q) => {
     const { token } = q
 
     let client_secret; try { client_secret = await decode(token) } catch (e) { return { error: e } }
