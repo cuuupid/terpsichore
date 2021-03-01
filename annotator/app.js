@@ -3,7 +3,7 @@ const Sentry = require('@sentry/electron')
 Sentry.init({ dsn: "https://6ddade58c447464b9ee60213b9190eb0@o342681.ingest.sentry.io/5655769" });
 
 //? Logger :)
-const Log = require('./logger')
+const Log = require('./src/logger')
 
 //? Expose commit hash for versioning
 Log.debug("Building commit hash")
@@ -46,11 +46,10 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
 //? Set up cache
 Log.debug('Building cache...')
-const BigBoi = require('./src/js/cache/big-boi-cache')('cache')
+require('./src/cache')('datasets')
 
 //? Define entry scripts
 const entry = () => {
-  Log.log('User is signed in, loading the main app.')
   win.loadURL(`file://${__dirname}/public/index.html#${commit_hash}`, {
     //* have to pretend to be Chrome to pass some checks
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4101.0 Safari/537.36 Edg/83.0.474.0'

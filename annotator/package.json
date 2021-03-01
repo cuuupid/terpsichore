@@ -73,7 +73,7 @@
     "electron-updater": "^4.3.5",
     "fs-extra": "^9.0.1",
     "jquery": "^3.4.1",
-    "nedb": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
     "node-abi": "^2.19.3",
     "planer": "^1.1.1",
     "request": "^2.88.0",

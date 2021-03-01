@@ -7,7 +7,7 @@ module.exports = {
   entry: "./app.js",
   module: {
     include: [
-      f("."),
+      f("src"),
     ],
     exclude: [
       f("public")
