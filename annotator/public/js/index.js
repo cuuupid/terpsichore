@@ -38,6 +38,15 @@ window.app = new Vue({
         datasets: this.datasets
       })
     },
+    task_SaveBlankDataset(key, name) {
+      return this.ipcTask('save dataset', {
+        key,
+        data: {
+          annotations: [],
+          name,
+        }
+      })
+    },
     //? Dataset Management
     async loadDatasets() {
       this.datasets = await this.callIPC(this.task_ListDatasets())
@@ -47,6 +56,7 @@ window.app = new Vue({
       const name = this.datasetName
       const key = String.random(12)
       this.datasets.unshift({ name, key })
+      await this.callIPC(this.task_SaveBlankDataset(key, name))
       this.datasets = await this.callIPC(this.task_SaveDatasets())
       this.datasetName = ''
     },
