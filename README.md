@@ -3,3 +3,6 @@
 Scrapes dance data (audio + pose sequences) from videos, pairs with lyrics. Includes a very simple and fast desktop tool for quickly annotating videos from YouTube.
 
 Cleaned data not included due to copyright concerns (I don't own the YouTube videos used). 
+
+<img src="img/datasets.png">
+<img src="img/annotate.png">
