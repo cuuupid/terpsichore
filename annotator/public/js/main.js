@@ -51,7 +51,7 @@ window.app = new Vue({
       this.datasetName = ''
     },
     async selectDataset(index) {
-      const dataset = this.datasets.splice(index, 1)
+      const dataset = this.datasets.splice(index, 1)?.[0]
       //? move it to the top to indicate it is recently opened
       this.datasets.unshift(dataset)
       this.datasets = await this.callIPC(this.task_SaveDatasets())
