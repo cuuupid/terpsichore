@@ -14,6 +14,15 @@ Vue.component('edit-annotation', {
       })
       console.log(this.$root.annotations)
       this.$root.saveDataset()
-    }
+    },
+    async cancel() {
+      if (this.fresh) this.$root.annotations.splice(this.$root.activeAnnotation, 1)
+      this.$root.activeAnnotation = -1
+    },
+    async loadVideo() {
+      const vid_id = this.link.split('?v=')[1].split('&')[0]
+      const embed = 'https://www.youtube.com/embed/' + vid_id
+      document.getElementById('embedFrame').src = embed
+    },
   }
 })

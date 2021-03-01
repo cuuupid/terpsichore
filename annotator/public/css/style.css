@@ -209,3 +209,9 @@ a.clickable:hover {
 .back-btn {
   margin-right: 20px;
 }
+
+#embedFrame {
+  width: 45vw;
+  height: 25.3125vw;
+  margin-top: 40px;
+}

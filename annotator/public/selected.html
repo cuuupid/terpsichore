@@ -42,25 +42,30 @@
         <div class="modal-dialog modal-full">
           <div class="modal-reg">
             <h4 class="modal-title text-center">{{fresh ? 'New Annotation' : 'Edit Annotation' }}</h4>
-            <div class="row">
-              <input v-model="link" type="text" placeholder="Video link" minlength="1" maxlength="30"
-                class="modal-input col-11" autofocus>
+            <div style="height: 100%; width: 50%; float: left;">
+              <div class="row">
+                <input @keyup.enter="loadVideo" v-model="link" type="text" placeholder="Video link"
+                  class="modal-input col-11" autofocus>
+              </div>
+              <div class="row">
+                <input v-model="start" type="text" placeholder="Start (M:SS)" minlength="4" maxlength="5"
+                  class="modal-input col-5" autofocus>
+                <input v-model="end" type="text" placeholder="End (M:SS)" minlength="4" maxlength="5"
+                  class="modal-input col-5" autofocus>
+              </div>
+              <div class="row" style="height: 50%">
+                <div contenteditable="true" class="lyrics col-11" id="lyrics">{{lyrics}}</div>
+              </div>
             </div>
-            <div class="row">
-              <input v-model="start" type="text" placeholder="Start (M:SS)" minlength="4" maxlength="5"
-                class="modal-input col-5" autofocus>
-              <input v-model="end" type="text" placeholder="End (M:SS)" minlength="4" maxlength="5"
-                class="modal-input col-5" autofocus>
-            </div>
-            <div class="row" style="height: 50%">
-              <div contenteditable="true" class="lyrics col-11" id="lyrics">{{lyrics}}</div>
+            <div style="height: 100%; width: 50%; float: right;">
+              <iframe id="embedFrame" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="modal-bottom">
               <p class="text-center">
                 <a class="clickable" @click="save">
                   Save
                 </a>
-                <a class="clickable" style="color: #777 !important; margin-left: 50px;" @click="$root.activeAnnotation = -1">
+                <a class="clickable" style="color: #777 !important; margin-left: 50px;" @click="cancel">
                   Cancel
                 </a>
               </p>
