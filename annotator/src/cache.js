@@ -14,7 +14,7 @@ module.exports = dir => {
     case 'linux': dir = path.join(process.env.HOME, '.Dance Annotator', dir); break
   }
 
-  //? Represented as an array of valid dataset keys
+  //? Represented as an array of valid datasets { name: String, key: String }
   const Legend = (() => {
     const filepath = path.join(dir, 'legend.json')
     fs2.ensureFileSync(filepath)
