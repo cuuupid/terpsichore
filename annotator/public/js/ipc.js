@@ -3,6 +3,7 @@
 const { ipcRenderer, remote } = require('electron')
 window.ipcRenderer = ipcRenderer
 window.remote = remote
+const IPC_TAG = ['%c[IPC]', 'background-color: #ff99ff; color: #000;']
 
 const IPCMiddleware = async (errorHandler, ipcStream) => {
   const checkError = (e, msg) => {
@@ -34,7 +35,7 @@ const IPCMiddleware = async (errorHandler, ipcStream) => {
     const { success } = d
     if (KJUR.jws.JWS.verifyJWT(s, secret.hexEncode(), { alg: ['HS256'] })) {
       if (!success) checkError(d.payload, 'Main process did not return success.')
-      if (!d.payload) console.warn(...MAILAPI_TAG, 'IPC payload is empty!')
+      if (!d.payload) console.warn(...IPC_TAG, 'IPC payload is empty!')
       return d.payload
     } else checkError(s, 'JWT token was not valid.')
   }
@@ -98,8 +99,6 @@ const IPCStream = async () => {
     tags: () => Object.keys(mailbox)
   }
 }
-
-const IPC_TAG = ['%c[IPC]', 'background-color: #ff99ff; color: #000;']
 
 const ipc = {
   data: {
