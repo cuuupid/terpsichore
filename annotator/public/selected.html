@@ -23,44 +23,8 @@
     <!--? User styles -->
     <link rel="stylesheet" href="css/custom.css">
 
-    <div class="btn add-dataset-btn">
-      <a class="clickable" @click="showAddDataset = true">
-        <i class="fa fa-plus" aria-hidden="true"></i>
-        Add a dataset
-      </a>
-    </div>
-
-    <div class="modal" v-if="showAddDataset">
-      <div class="modal-backdrop" @click.self.stop.prevent="showAddDataset = false"></div>
-      <div class="modal-dialog modal-sm">
-        <div class="modal-reg">
-          <h4 class="modal-title text-center">New Dataset</h4>
-          <input v-model="datasetName" type="text" placeholder="Dataset name" minlength="1" maxlength="30" class="modal-input"
-            style="margin-top: -20px;" autofocus>
-          <div class="modal-bottom">
-            <a v-if="datasetName" class="text-center clickable" @click="addDataset"><p>Add Dataset</p></a>
-            <p v-else class="red text-center">Please enter a valid dataset name.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <a v-for="(dataset, i) in datasets" class="clickable" @click="selectDataset(i)">
-      <div class="dataset-item row">
-        <div class="col-1">
-          <i class="fa fa-table" aria-hidden="true"></i>
-        </div>
-        <div class="col-8">
-          <span class="dataset-name">{{dataset.name}}</span>
-        </div>
-        <div class="col-3">
-          <small class="dataset-key">{{dataset.key}}</small>
-        </div>
-      </div>
-    </a>
-
     <a class="text-center footer">
-      <p><small>version {{hash}}</small></p>
+      <p><small>dataset {{datasetKey}}</small></p>
     </a>
 
   </div>
@@ -79,7 +43,7 @@
 
   <!--? Source -->
   <script src="js/ipc.js"></script>
-  <script src="js/index.js"></script>
+  <script src="js/selected.js"></script>
 
 </body>
 

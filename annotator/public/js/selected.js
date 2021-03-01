@@ -6,21 +6,17 @@ window.app = new Vue({
   data: {
     TAG: ['%c[MAIN]', 'background-color: #dd00aa; color: #000;'],
     hash: '',
-    datasets: [], //? array of dataset keys
-    showAddDataset: false, //? controls visibility of add dataset modal
-    datasetName: '', //? name of a new dataset
+    datasetKey: '',
   },
   async created() {
     console.time('APP STARTUP')
     info(...(this.TAG), 'Initializing application')
-    this.hash = window.location.hash.substr(1, 12)
+    this.datasetKey = window.location.hash
 
     //? setup IPC
     info(...(this.TAG), 'Initializing IPC')
     await this.initIPC()
 
-    //? load previously saved datasets
-    await this.loadDatasets()
 
     success(...(this.TAG), 'Finished initialization.')
     console.timeEnd('APP STARTUP')
