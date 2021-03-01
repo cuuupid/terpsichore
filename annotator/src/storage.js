@@ -23,7 +23,7 @@ module.exports = dir => {
       const fp = `${dir}/${key}.json`
       fs2.ensureFileSync(fp)
       const s = fs.readFileSync(fp)
-      return s
+      return JSON.parse(s)
     },
     save: (key, d) => {
       key = clean_key(key)
@@ -31,6 +31,7 @@ module.exports = dir => {
       fs2.ensureFileSync(fp)
       const s = JSON.stringify(d)
       fs.writeFileSync(fp, s)
+      return Storage.load(key)
     },
     pop: key => {
       key = clean_key(key)
