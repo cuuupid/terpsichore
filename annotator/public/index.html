@@ -1,8 +1,77 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Hello World</title>
-  </head>
-  <body>
-    <h1>Hello World</h1>
-  </body>
+
+<head>
+  <!-- ? Meta -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Dance Annotator</title>
+  <!-- ? Base CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/fontawesome.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- ? jQuery -->
+  <script src="js/third-party/jquery.min.js"></script>
+</head>
+
+<body class="bg">
+  <!-- TODO: If possible, add 'collapsed' when 'zen' is added so that zen doesn't exist without collapsed ever -->
+  <!-- TODO: Add 'Zen Mode' in 'Window' mac menu option teehee -->
+
+  <div id="app" class="inline-flex container">
+
+    <!--? User styles -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <div class="btn add-dataset-btn">
+      <a class="clickable" @click="showAddDataset = true">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        Add a dataset
+      </a>
+    </div>
+
+    <div class="modal" v-if="showAddDataset">
+      <div class="modal-backdrop" @click.self.stop.prevent="showAddDataset = false"></div>
+      <div class="modal-dialog modal-sm">
+        <div class="modal-reg">
+          <h4 class="modal-title text-center">New Dataset</h4>
+          <input v-model="datasetName" type="text" placeholder="Dataset name" minlength="1" maxlength="30" class="modal-input"
+            style="margin-top: -20px;" autofocus>
+          <div class="modal-bottom">
+            <a v-if="datasetName" class="text-center clickable"><p>Add Dataset</p></a>
+            <p v-else class="red text-center">Please enter a valid dataset name.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div v-for="(dataset, i) in datasets">
+      <i class="fab fa-linux" aria-hidden="true"></i>
+      <p><a class="clickable">{{dataset.name}}</a> <small>{{dataset.key}}</small></p>
+    </div>
+
+    <a class="text-center footer">
+      <p><small>version {{hash}}</small></p>
+    </a>
+
+  </div>
+
+  <!--? 3rd party libraries -->
+  <script src="js/third-party/popper.min.js"></script>
+  <script src="js/third-party/bootstrap.min.js"></script>
+  <script src="js/third-party/jwt-decode.min.js"></script>
+  <script src="js/third-party/jsrsasign.min.js"></script>
+  <script src="js/third-party/localforage.min.js"></script>
+  <script src="js/third-party/vue.min.js"></script>
+  <script src="js/third-party/crypto.min.js"></script>
+  <script src="js/third-party/svg2png.js"></script>
+  <script src="js/third-party/jdenticon.min.js"></script>
+  <script src="js/third-party/aiko-utils.min.js"></script>
+
+  <!--? Source -->
+  <script src="js/ipc.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+
 </html>
