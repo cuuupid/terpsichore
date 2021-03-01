@@ -69,5 +69,3 @@ window.app = new Vue({
     }
   }
 })
-
-window.onresize = top.app.recalculateHeight
