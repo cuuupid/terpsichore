@@ -23,8 +23,50 @@
     <!--? User styles -->
     <link rel="stylesheet" href="css/custom.css">
 
+    <h1 class="dataset-title text-center">{{name}}</h1>
+
+    <a class="clickable" @click="addAnnotation">
+      <div class="btn add-annotation-btn">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        Add an Annotation
+      </div>
+    </a>
+
+    <edit-annotation v-if="activeAnnotation > -1" :annotation="annotations[activeAnnotation]" inline-template>
+      <div class="modal">
+        <div class="modal-dialog modal-full">
+          <div class="modal-reg">
+            <h4 class="modal-title text-center">{{fresh ? 'New Annotation' : 'Edit Annotation' }}</h4>
+            <div class="row">
+              <input v-model="link" type="text" placeholder="Video link" minlength="1" maxlength="30"
+                class="modal-input col-11" autofocus>
+            </div>
+            <div class="row">
+              <input v-model="start" type="text" placeholder="Start (M:SS)" minlength="4" maxlength="5"
+                class="modal-input col-5" autofocus>
+              <input v-model="end" type="text" placeholder="End (M:SS)" minlength="4" maxlength="5"
+                class="modal-input col-5" autofocus>
+            </div>
+            <div class="row" style="height: 50%">
+              <div contenteditable="true" class="lyrics col-11" id="lyrics">{{lyrics}}</div>
+            </div>
+            <div class="modal-bottom">
+              <p class="text-center">
+                <a class="clickable" @click="save">
+                  Save
+                </a>
+                <a class="clickable" style="color: #777 !important; margin-left: 50px;" @click="$root.activeAnnotation = -1">
+                  Cancel
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </edit-annotation>
+
     <a class="text-center footer">
-      <p><small>dataset {{datasetKey}}</small></p>
+      <p><small>dataset key {{key}}</small></p>
     </a>
 
   </div>
@@ -43,6 +85,7 @@
 
   <!--? Source -->
   <script src="js/ipc.js"></script>
+  <script src="js/components/edit-annotation.js"></script>
   <script src="js/selected.js"></script>
 
 </body>
