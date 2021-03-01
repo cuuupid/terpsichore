@@ -1,0 +1,88 @@
+:root {
+  --main-color: #486fff;
+  --main-color-hover: #4366e8;
+  --main-bg-color: #312f2e !important;
+  --secondary-bg-color: #21201d !important;
+  --text-color: #fff !important;
+}
+
+html, body {
+  background-color: var(--main-bg-color) !important;
+  color: var(--text-color) !important;
+  padding-top: 10px;
+}
+
+a {
+  color: var(--main-color) !important;
+  cursor: default !important;
+}
+
+a.clickable:hover {
+  color: var(--main-color-hover) !important;
+  cursor: pointer !important;
+}
+
+.add-dataset-btn {
+  width: 100%;
+  background-color: var(--secondary-bg-color);
+  color: var(--main-color);
+}
+
+.footer > p {
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 30px);
+  text-align: center;
+}
+
+.modal {
+  display: unset;
+}
+
+.modal-backdrop {
+  background-color: rgba(0,0,0,0.4);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.modal-dialog {
+  background-color: var(--main-bg-color);
+  margin: auto;
+  z-index: 1060;
+  pointer-events: unset;
+}
+
+.modal-title {
+  opacity: 0.2 !important;
+  margin-bottom: 30px;
+}
+
+.modal-input {
+  margin: auto;
+  outline: none;
+  width: 80%;
+  margin-left: 10%;
+  color: white !important;
+  padding-left: 10px;
+  background: var(--secondary-bg-color);
+  border: none;
+  height: 38px;
+}
+
+.modal-sm {
+  width: 90%;
+  height: 30%;
+  margin-top: calc(35%);
+  padding: 15px;
+}
+
+.modal-bottom {
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 30px);
+}
+
+.red {
+  color: #ff0000;
+}
